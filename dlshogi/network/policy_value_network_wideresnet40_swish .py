@@ -79,7 +79,7 @@ class PolicyValueNetwork(nn.Module):
         self.l50 = nn.Conv2d(in_channels=k, out_channels=k, kernel_size=3, padding=1, bias=False)
         self.l51 = nn.Conv2d(in_channels=k, out_channels=k, kernel_size=3, padding=1, bias=False)
         # ここまで追加
-        #追追加（25→50)
+        #追追加（25→40)
         self.l52 = nn.Conv2d(in_channels=k, out_channels=k, kernel_size=3, padding=1, bias=False)
         self.l53 = nn.Conv2d(in_channels=k, out_channels=k, kernel_size=3, padding=1, bias=False)
         self.l54 = nn.Conv2d(in_channels=k, out_channels=k, kernel_size=3, padding=1, bias=False)
@@ -417,9 +417,10 @@ class PolicyValueNetwork(nn.Module):
         h83_v = self.swish(self.l83_v(torch.flatten(h82_v, 1)))
         
         return h82_1, self.l84_v(h83_v)
+    
     def set_swish(self, memory_efficient=True):
-            """Sets swish function as memory efficient (for training) or standard (for export).
+        """Sets swish function as memory efficient (for training) or standard (for export).
         Args:
             memory_efficient (bool): Whether to use memory-efficient version of swish.
         """
-        Self.swish = nn.SiLU() if memory_efficient else Swish()
+        self.swish = nn.SiLU() if memory_efficient else Swish()

@@ -503,9 +503,10 @@ class PolicyValueNetwork(nn.Module):
         h103_v = self.swish(self.l103_v(torch.flatten(h102_v, 1)))
         
         return h102_1, self.l104_v(h103_v)
+    
     def set_swish(self, memory_efficient=True):
-            """Sets swish function as memory efficient (for training) or standard (for export).
+        """Sets swish function as memory efficient (for training) or standard (for export).
         Args:
             memory_efficient (bool): Whether to use memory-efficient version of swish.
         """
-        Self.swish = nn.SiLU() if memory_efficient else Swish()
+        self.swish = nn.SiLU() if memory_efficient else Swish()
