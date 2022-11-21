@@ -4,9 +4,25 @@ import re
 
 def policy_value_network(network, add_sigmoid=False):
     # wideresnet10 and resnet10_swish are treated specially because there are published models
-    if network == 'wideresnet10':
+    if network == 'wideresnet5':
+        from dlshogi.network.policy_value_network_wideresnet10 import PolicyValueNetwork
+    elif network == 'resnet5_swish':
+        from dlshogi.network.policy_value_network_resnet10_swish import PolicyValueNetwork
+    elif network == 'wideresnet10':
         from dlshogi.network.policy_value_network_wideresnet10 import PolicyValueNetwork
     elif network == 'resnet10_swish':
+        from dlshogi.network.policy_value_network_resnet10_swish import PolicyValueNetwork
+    elif network == 'wideresnet25':
+        from dlshogi.network.policy_value_network_wideresnet10 import PolicyValueNetwork
+    elif network == 'resnet25_swish':
+        from dlshogi.network.policy_value_network_resnet10_swish import PolicyValueNetwork
+    elif network == 'wideresnet40':
+        from dlshogi.network.policy_value_network_wideresnet10 import PolicyValueNetwork
+    elif network == 'resnet40_swish':
+        from dlshogi.network.policy_value_network_resnet10_swish import PolicyValueNetwork
+    elif network == 'wideresnet50':
+        from dlshogi.network.policy_value_network_wideresnet10 import PolicyValueNetwork
+    elif network == 'resnet50_swish':
         from dlshogi.network.policy_value_network_resnet10_swish import PolicyValueNetwork
     elif network[:6] == 'resnet':
         from dlshogi.network.policy_value_network_resnet import PolicyValueNetwork
